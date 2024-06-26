@@ -1,0 +1,10 @@
+image:
+  tag: "1.0.0-main"
+
+notSecretStr: "Not so secret string"
+
+externalSecretsStoreName: "k3s-fake-store"
+externalSecretsStoreKind:  "ClusterSecretStore"
+externalSecretCreatedSecretName: "argocd-helm-secret"
+externalSecretCreatedSecretKeyName: "secret-string"
+externalSecretRefSecretKeyName: "/argocd-helm/secret-string"
