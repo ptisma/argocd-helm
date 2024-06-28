@@ -1,0 +1,5 @@
+image:
+  repository: ptisma/argocd-helm-client
+  tag: "1.0.0-main"
+
+serverEndpoints: "http://argocd-helm-server/healthz,http://argocd-helm-server/hostname,http://argocd-helm-server/,http://argocd-helm-server/secret,http://argocd-helm-server/notSecret"

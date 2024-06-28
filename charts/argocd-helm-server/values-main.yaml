@@ -1,4 +1,5 @@
 image:
+  repository: ptisma/argocd-helm-server
   tag: "1.0.0-main"
 
 notSecretStr: "Not so secret string"

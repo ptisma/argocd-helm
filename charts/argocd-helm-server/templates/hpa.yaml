@@ -2,14 +2,14 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: {{ include "argocd-helm.fullname" . }}
+  name: {{ include "argocd-helm-server.fullname" . }}
   labels:
-    {{- include "argocd-helm.labels" . | nindent 4 }}
+    {{- include "argocd-helm-server.labels" . | nindent 4 }}
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: {{ include "argocd-helm.fullname" . }}
+    name: {{ include "argocd-helm-server.fullname" . }}
   minReplicas: {{ .Values.autoscaling.minReplicas }}
   maxReplicas: {{ .Values.autoscaling.maxReplicas }}
   metrics:

@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "argocd-helm.fullname" . }}
+  name: {{ include "argocd-helm-server.fullname" . }}
   labels:
-    {{- include "argocd-helm.labels" . | nindent 4 }}
+    {{- include "argocd-helm-server.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -12,4 +12,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-    {{- include "argocd-helm.selectorLabels" . | nindent 4 }}
+    {{- include "argocd-helm-server.selectorLabels" . | nindent 4 }}

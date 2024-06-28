@@ -1,11 +1,11 @@
-# Default values for argocd-helm.
+# Default values for argocd-helm-server.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
 
 image:
-  repository: ptisma/argocd-helm
+  repository: nginx
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
@@ -73,11 +73,11 @@ resources: {}
 
 livenessProbe:
   httpGet:
-    path: /healthz
+    path: /
     port: http
 readinessProbe:
   httpGet:
-    path: /healthz
+    path: /
     port: http
 
 autoscaling:

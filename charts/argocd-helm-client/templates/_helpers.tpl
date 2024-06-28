@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "argocd-helm.name" -}}
+{{- define "argocd-helm-client.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "argocd-helm.fullname" -}}
+{{- define "argocd-helm-client.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "argocd-helm.chart" -}}
+{{- define "argocd-helm-client.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "argocd-helm.labels" -}}
-helm.sh/chart: {{ include "argocd-helm.chart" . }}
-{{ include "argocd-helm.selectorLabels" . }}
+{{- define "argocd-helm-client.labels" -}}
+helm.sh/chart: {{ include "argocd-helm-client.chart" . }}
+{{ include "argocd-helm-client.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,17 +45,17 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "argocd-helm.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "argocd-helm.name" . }}
+{{- define "argocd-helm-client.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "argocd-helm-client.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "argocd-helm.serviceAccountName" -}}
+{{- define "argocd-helm-client.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "argocd-helm.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "argocd-helm-client.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
