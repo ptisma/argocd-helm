@@ -22,5 +22,5 @@ Create a chart using command helm create
 In the GitOps fashion, inside the file values-main.yaml we define the values for chart which will override the default ones. This file reflects the main branch, aka the main version of this chart.
 
 #### argocd-helm-server
-Helm chart for apps/server. We defined additional resource: ExternalSecret, which will reference the ClusterSecretStore  deployed already in the cluster for fetching the actual secret key/values
+Helm chart for apps/server. We defined additional resource: ExternalSecret, which will reference the ClusterSecretStore deployed already in the cluster for fetching the actual secret key/values
 
